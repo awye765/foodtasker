@@ -12,7 +12,7 @@ A clone of Uber Eats.
 
 - [X] Task 3: [Python] - Authentication for Restaurant Owners
 
-- [ ] Task 4: [Python] - Heroku
+- [X] Task 4: [Python] - Heroku
 
 - [ ] Task 5: [Python] - Authentication with Facebook
 
