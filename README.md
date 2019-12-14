@@ -14,7 +14,7 @@ A clone of Uber Eats.
 
 - [X] Task 4: [Python] - Heroku
 
-- [ ] Task 5: [Python] - Authentication with Facebook
+- [X] Task 5: [Python] - Authentication with Facebook
 
 - [ ] Task 6: [Python] - Design Restaurant Dashboard
 
