@@ -20,7 +20,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/1.10/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'uf%^j+ou2s82zw+q4e++%@v7*a4k)uwxxe_h9%@z&yk6(n865n'
+SECRET_KEY = '-jg2ngl7$$ejo!&cr7v^#yxcyggdo#bm4!op3x3m72nnf5#1l0'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -39,7 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'foodtaskerapp',
     'oauth2_provider',
-    'social_django',
+    'social.apps.django_app.default',
     'rest_framework_social_oauth2',
 ]
 
@@ -67,8 +67,8 @@ TEMPLATES = [
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
                 'django.template.context_processors.media',
-                'social_django.context_processors.backends',
-                'social_django.context_processors.login_redirect',
+                'social.apps.django_app.context_processors.backends',
+                'social.apps.django_app.context_processors.login_redirect',
             ],
         },
     },
@@ -137,18 +137,30 @@ db_from_env = dj_database_url.config()
 DATABASES['default'].update(db_from_env)
 
 AUTHENTICATION_BACKENDS = (
-   'social_core.backends.facebook.FacebookOAuth2',
+   'social.backends.facebook.FacebookOAuth2',
    'rest_framework_social_oauth2.backends.DjangoOAuth2',
    'django.contrib.auth.backends.ModelBackend',
 )
 
 # Facebook configuration
-SOCIAL_AUTH_FACEBOOK_KEY = '1023322704704430'
-SOCIAL_AUTH_FACEBOOK_SECRET = '4db7831f1f3628a3ec05bbc55ae0d7f1'
+SOCIAL_AUTH_FACEBOOK_KEY = '595892800571371'
+SOCIAL_AUTH_FACEBOOK_SECRET = '08dba096cd8f0dba7ae27b9f434c55c6'
 
-# Define SOCIAL_AUTH_FACEBOOK_SCOPE to get extra permissions from Facebook.
-# Email is not sent by default, to get it, you must request the email permission.
+# Define SOCIAL_AUTH_FACEBOOK_SCOPE to get extra permissions from facebook. Email is not sent by default, to get it, you must request the email permission:
 SOCIAL_AUTH_FACEBOOK_SCOPE = ['email']
 SOCIAL_AUTH_FACEBOOK_PROFILE_EXTRA_PARAMS = {
     'fields': 'id,name,email'
 }
+
+SOCIAL_AUTH_PIPELINE = (
+    'social.pipeline.social_auth.social_details',
+    'social.pipeline.social_auth.social_uid',
+    'social.pipeline.social_auth.auth_allowed',
+    'social.pipeline.social_auth.social_user',
+    'social.pipeline.user.get_username',
+    'social.pipeline.user.create_user',
+    'foodtaskerapp.social_auth_pipeline.create_user_by_type',  # <--- set the path to the function
+    'social.pipeline.social_auth.associate_user',
+    'social.pipeline.social_auth.load_extra_data',
+    'social.pipeline.user.user_details',
+)
