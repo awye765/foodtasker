@@ -18,7 +18,7 @@ A clone of Uber Eats.
 
 - [X] Task 6: [Python] - Design Restaurant Dashboard
 
-- [ ] Task 7: [Python] - Bootstrap
+- [X] Task 7: [Python] - Bootstrap
 
 - [ ] Task 8: [Python] - Restaurant Dashboard - Meals
 
