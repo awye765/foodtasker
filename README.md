@@ -16,7 +16,7 @@ A clone of Uber Eats.
 
 - [X] Task 5: [Python] - Authentication with Facebook
 
-- [ ] Task 6: [Python] - Design Restaurant Dashboard
+- [X] Task 6: [Python] - Design Restaurant Dashboard
 
 - [ ] Task 7: [Python] - Bootstrap
 
