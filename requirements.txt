@@ -22,7 +22,7 @@ idna==2.6
 
 oauthlib==2.0.6
 
-Pillow==3.3.0
+Pillow==6.2.0
 
 PyJWT==1.6.0
 
