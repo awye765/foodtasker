@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
+from django.utils import timezone
 
 class Restaurant(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE, related_name='restaurant')
@@ -38,3 +39,42 @@ class Meal(models.Model):
 
     def __str__(self):
         return self.name
+
+class Order(models.Model):
+    COOKING = 1
+    READY = 2
+    ONTHEWAY = 3
+    DELIVERED = 4
+
+    STATUS_CHOICES = (
+        (COOKING, "Cooking"),
+        (COOKING, "Ready"),
+        (COOKING, "On the way"),
+        (COOKING, "Delivered"),
+
+    )
+
+    customer = models.ForeignKey(Customer)
+    restaurant = models.ForeignKey(Restaurant)
+    driver = models.ForeignKey(Driver)
+    address = models.CharField(max_length=500)
+    total = models.IntegerField()
+    status = models.IntegerField(choices = STATUS_CHOICES)
+    create_at = models.DateTimeField(default = timezone.now)
+    piced_at = models.DateTimeField(blank = True, null = True)
+
+    def __str__(self):
+        return str(self.id)
+
+class OrderDetails(models.Model):
+    order = models.ForeignKey(Order, related_name='order_details')
+    meal = models.ForeignKey(Meal)
+    quantity = models.IntegerField()
+    sub_total = models.IntegerField()
+
+    class Meta:
+        verbose_name_plural = "details"
+
+    def __str__(self):
+        return str(self.id)
+
