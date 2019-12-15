@@ -4,7 +4,7 @@ from django.contrib.auth.decorators import login_required
 from foodtaskerapp.forms import UserForm, RestaurantForm, UserFormForEdit, MealForm
 from django.contrib.auth import authenticate, login
 from django.contrib.auth.models import User
-
+from foodtaskerapp.models import Meal
 # Create your views here.
 def home(request):
     return redirect(restaurant_home)
@@ -41,7 +41,8 @@ def restaurant_account(request):
 @login_required(login_url='/restaurant/sign-in/')
 
 def restaurant_meal(request):
-    return render(request, 'restaurant/meal.html', {})
+    meals = Meal.objects.filter(restaurant = request.user.restaurant).order_by("-id")
+    return render(request, 'restaurant/meal.html', {"meals": meals})
 
 @login_required(login_url='/restaurant/sign-in/')
 
