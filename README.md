@@ -20,11 +20,11 @@ A clone of Uber Eats.
 
 - [X] Task 7: [Python] - Bootstrap
 
-- [ ] Task 8: [Python] - Restaurant Dashboard - Meals
+- [X] Task 8: [Python] - Restaurant Dashboard - Meals
 
-- [ ] Task 9: [Python] - Restaurant Dashboard - Orders
+- [X] Task 9: [Python] - Restaurant Dashboard - Orders
 
-- [ ] Task 10: [Python] - RESTful APIs
+- [X] Task 10: [Python] - RESTful APIs
 
 - [ ] Task 11: [Python] - APIs for Customers
 
