@@ -48,10 +48,9 @@ class Order(models.Model):
 
     STATUS_CHOICES = (
         (COOKING, "Cooking"),
-        (COOKING, "Ready"),
-        (COOKING, "On the way"),
-        (COOKING, "Delivered"),
-
+        (READY, "Ready"),
+        (ONTHEWAY, "On the way"),
+        (DELIVERED, "Delivered"),
     )
 
     customer = models.ForeignKey(Customer)
@@ -60,20 +59,20 @@ class Order(models.Model):
     address = models.CharField(max_length=500)
     total = models.IntegerField()
     status = models.IntegerField(choices = STATUS_CHOICES)
-    create_at = models.DateTimeField(default = timezone.now)
-    piced_at = models.DateTimeField(blank = True, null = True)
+    created_at = models.DateTimeField(default = timezone.now)
+    picked_at = models.DateTimeField(blank = True, null = True)
 
     def __str__(self):
         return str(self.id)
 
 class OrderDetails(models.Model):
-    order = models.ForeignKey(Order, related_name='order_details')
+    order = models.ForeignKey(Order, related_name = 'order_details')
     meal = models.ForeignKey(Meal)
     quantity = models.IntegerField()
     sub_total = models.IntegerField()
 
-    class Meta:
-        verbose_name_plural = "details"
+    # class Meta:
+    #     verbose_name_plural = "details"
 
     def __str__(self):
         return str(self.id)
