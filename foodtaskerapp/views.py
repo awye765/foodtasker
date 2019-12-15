@@ -8,10 +8,41 @@ from django.contrib.auth.models import User
 def home(request):
     return redirect(restaurant_home)
 
+# Restaurant Home
 @login_required(login_url='/restaurant/sign-in/')
 
 def restaurant_home(request):
     return render(request, 'restaurant/home.html', {})
+
+# Restaurant Account
+
+@login_required(login_url='/restaurant/sign-in/')
+
+def restaurant_account(request):
+    return render(request, 'restaurant/account.html', {})
+
+# Restaurant Meal
+
+@login_required(login_url='/restaurant/sign-in/')
+
+def restaurant_meal(request):
+    return render(request, 'restaurant/meal.html', {})
+
+# Restaurant Order
+
+@login_required(login_url='/restaurant/sign-in/')
+
+def restaurant_order(request):
+    return render(request, 'restaurant/order.html', {})
+
+# Restaurant Report
+
+@login_required(login_url='/restaurant/sign-in/')
+
+def restaurant_report(request):
+    return render(request, 'restaurant/report.html', {})
+
+# Restaurant Sign Up
 
 def restaurant_sign_up(request):
     user_form = UserForm()
