@@ -20,7 +20,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/1.10/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'r3r_p*aa^f96+i-r9f-(++f1c65+9mo&qx*c7ajjtulsgprdpd'
+SECRET_KEY = '-jg2ngl7$$ejo!&cr7v^#yxcyggdo#bm4!op3x3m72nnf5#1l0'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -67,8 +67,8 @@ TEMPLATES = [
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
                 'django.template.context_processors.media',
-                'social_django.context_processors.backends',
-                'social_django.context_processors.login_redirect',
+                'social.apps.django_app.context_processors.backends',
+                'social.apps.django_app.context_processors.login_redirect',
             ],
         },
     },
@@ -137,14 +137,16 @@ db_from_env = dj_database_url.config()
 DATABASES['default'].update(db_from_env)
 
 AUTHENTICATION_BACKENDS = (
-    'social.backends.facebook.FacebookOAuth2',
-    'rest_framework_social_oauth2.backends.DjangoOAuth2',
-    'django.contrib.auth.backends.ModelBackend',
+   'social.backends.facebook.FacebookOAuth2',
+   'rest_framework_social_oauth2.backends.DjangoOAuth2',
+   'django.contrib.auth.backends.ModelBackend',
 )
+
 
 SOCIAL_AUTH_FACEBOOK_KEY = '1023322704704430'
 SOCIAL_AUTH_FACEBOOK_SECRET = '4db7831f1f3628a3ec05bbc55ae0d7f1'
+
 SOCIAL_AUTH_FACEBOOK_SCOPE = ['email']
 SOCIAL_AUTH_FACEBOOK_PROFILE_EXTRA_PARAMS = {
-    'fields': 'id,name,email'
+    'fields': 'id,name,email',
 }
